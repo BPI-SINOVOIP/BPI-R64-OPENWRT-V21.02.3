@@ -1,0 +1,20 @@
+diff -urN a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi	2021-04-15 05:01:22.252445129 +0800
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi	2021-04-15 05:00:05.028054642 +0800
+@@ -716,11 +716,16 @@
+ 		status = "disabled";
+ 	};
+ 
++	factory: partition@00000000 {
++		label = "Factory";
++	};
++
+ 	wmac: wmac@18000000 {
+ 		compatible = "mediatek,mt7622-wmac";
+ 		reg = <0 0x18000000 0 0x100000>;
+ 		interrupts = <GIC_SPI 211 IRQ_TYPE_LEVEL_LOW>;
+ 
++		mediatek,mtd-eeprom = <&factory 0x0000>;
+ 		mediatek,infracfg = <&infracfg>;
+ 		status = "disabled";
+ 
